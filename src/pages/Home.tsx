@@ -35,6 +35,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <form
+      data-testid="home"
       style={{
         width: "100%",
         height: "100vh",
