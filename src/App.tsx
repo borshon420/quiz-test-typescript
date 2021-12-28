@@ -6,7 +6,7 @@ const Home = lazy(()=> import('./pages/Home'));
 const Exam = lazy(()=> import('./pages/Exam'));
 const Result = lazy(()=> import('./pages/Result'));
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <Suspense fallback={<p>Loading...</p>}>
