@@ -1,3 +1,4 @@
+import { Button, MenuItem, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +19,7 @@ const Home: React.FC = () => {
   });
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -33,52 +34,65 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div>
+    <div>      
       <form
       data-testid="home"
-      style={{
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center"
-    }}
     onSubmit={handleSubmit}
       >
         <div
         style={{
-            width: "320px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            marginTop: "100px",
+            textAlign: "left"
         }}
         >
-          <input
+          <h2>Online MCQ</h2>
+          <TextField
             value={user.name}
             name="name"
             type="text"
             placeholder="Please enter your name"
+            variant="outlined"
             onChange={handleInputChange}
+            sx={{width: "25%", marginBottom: "30px"}}
           />
-          <select
+          <TextField
+          select
+          label="Select Gender"
             name="gender"
             value={user.gender}
             onChange={handleInputChange}
+            sx={{width: "25%", marginBottom: "30px"}}
+            
           >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-          <select 
-            name="lang" 
-            value={user.lang} 
-            onChange={handleInputChange}
+            <MenuItem key="Male" value="Male">
+                  Male
+              </MenuItem>
+            <MenuItem key="Female" value="Female">
+                  Female
+              </MenuItem>
+            
+          </TextField>
+          <TextField 
+            select
+            label="Select Language"
+              name="lang"
+              value={user.lang}
+              onChange={handleInputChange}
+              sx={{width: "25%", marginBottom: "25px"}}
           >
-            <option value="Java">Java</option>
-            <option value="NodeJS">NodeJS</option>
-          </select>
-          <button type="submit">Submit</button>
+            
+            <MenuItem key="Java" value="Java">
+                  Java
+              </MenuItem>
+            <MenuItem key="NodeJS" value="NodeJS">
+                  NodeJS
+              </MenuItem>
+          </TextField>
+          <Button sx={{width: "25%"}} size="large" variant="contained" type="submit">Submit</Button>
         </div>
       </form>
     </div>
